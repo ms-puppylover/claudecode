@@ -2000,6 +2000,142 @@
     document.getElementById('pledgeConfirm').style.display = 'block';
     trackSmartChoice();
     saveAll();
+    // Draw and show the certificate
+    var name = sig.value.trim();
+    drawCertificate(name);
+    var modal = document.getElementById('cert-modal');
+    modal.style.display = 'flex';
+  }
+
+  function closeCertModal() {
+    document.getElementById('cert-modal').style.display = 'none';
+  }
+
+  function drawCertificate(name) {
+    var canvas = document.getElementById('certCanvas');
+    var ctx = canvas.getContext('2d');
+    var W = canvas.width, H = canvas.height;
+
+    // Background gradient
+    var bg = ctx.createLinearGradient(0, 0, W, H);
+    bg.addColorStop(0,   '#2D1B5E');
+    bg.addColorStop(0.5, '#4A1D96');
+    bg.addColorStop(1,   '#6B3FA0');
+    ctx.fillStyle = bg;
+    ctx.beginPath();
+    ctx.roundRect(0, 0, W, H, 28);
+    ctx.fill();
+
+    // Decorative corner stars
+    var stars = [[50,50],[W-50,50],[50,H-50],[W-50,H-50]];
+    ctx.fillStyle = 'rgba(255,255,255,0.08)';
+    stars.forEach(function(s){
+      ctx.beginPath(); ctx.arc(s[0],s[1],60,0,Math.PI*2); ctx.fill();
+    });
+
+    // Gold border
+    ctx.strokeStyle = '#F5D87A';
+    ctx.lineWidth = 4;
+    ctx.beginPath();
+    ctx.roundRect(18, 18, W-36, H-36, 20);
+    ctx.stroke();
+
+    // Inner thin border
+    ctx.strokeStyle = 'rgba(245,216,122,0.35)';
+    ctx.lineWidth = 1.5;
+    ctx.beginPath();
+    ctx.roundRect(28, 28, W-56, H-56, 16);
+    ctx.stroke();
+
+    // Medal emoji (large)
+    ctx.font = '72px serif';
+    ctx.textAlign = 'center';
+    ctx.fillText('🏅', W/2, 118);
+
+    // "CERTIFICATE OF PROMISE"
+    ctx.fillStyle = '#F5D87A';
+    ctx.font = 'bold 15px "Nunito", Arial, sans-serif';
+    ctx.letterSpacing = '0.15em';
+    ctx.fillText('CERTIFICATE OF PROMISE', W/2, 168);
+
+    // "ThinkTwice"
+    ctx.fillStyle = 'rgba(255,255,255,0.5)';
+    ctx.font = '13px "Nunito", Arial, sans-serif';
+    ctx.fillText('ThinkTwice • AI Literacy for Teens', W/2, 192);
+
+    // Divider line
+    ctx.strokeStyle = 'rgba(245,216,122,0.4)';
+    ctx.lineWidth = 1;
+    ctx.beginPath(); ctx.moveTo(W/2-220,208); ctx.lineTo(W/2+220,208); ctx.stroke();
+
+    // "This certifies that"
+    ctx.fillStyle = 'rgba(255,255,255,0.75)';
+    ctx.font = 'italic 17px Georgia, serif';
+    ctx.fillText('This certifies that', W/2, 245);
+
+    // Signature name
+    ctx.fillStyle = '#FFFFFF';
+    ctx.font = 'bold 48px "Brush Script MT", "Segoe Script", cursive';
+    ctx.fillText(name, W/2, 310);
+
+    // Underline
+    var nameW = ctx.measureText(name).width;
+    ctx.strokeStyle = '#F5D87A';
+    ctx.lineWidth = 1.5;
+    ctx.beginPath();
+    ctx.moveTo(W/2 - Math.min(nameW/2+20, 280), 322);
+    ctx.lineTo(W/2 + Math.min(nameW/2+20, 280), 322);
+    ctx.stroke();
+
+    // Pledge text
+    ctx.fillStyle = 'rgba(255,255,255,0.9)';
+    ctx.font = '16px "Nunito", Arial, sans-serif';
+    ctx.fillText('has made the ThinkTwice Promise:', W/2, 358);
+
+    // Promise quote box
+    ctx.fillStyle = 'rgba(255,255,255,0.1)';
+    ctx.beginPath(); ctx.roundRect(W/2-290,372,580,70,14); ctx.fill();
+    ctx.strokeStyle='rgba(255,255,255,0.15)'; ctx.lineWidth=1;
+    ctx.beginPath(); ctx.roundRect(W/2-290,372,580,70,14); ctx.stroke();
+
+    ctx.fillStyle = 'rgba(255,255,255,0.92)';
+    ctx.font = 'italic 15px Georgia, serif';
+    ctx.fillText('"I will use AI to learn, create, and make a positive impact.', W/2, 400);
+    ctx.fillText('I will be safe, honest, and kind."', W/2, 424);
+
+    // Date
+    var today = new Date();
+    var dateStr = today.toLocaleDateString('en-US',{year:'numeric',month:'long',day:'numeric'});
+    ctx.fillStyle = '#F5D87A';
+    ctx.font = 'bold 13px "Nunito", Arial, sans-serif';
+    ctx.fillText('Issued on ' + dateStr, W/2, 475);
+
+    // Bottom badges
+    var badges = ['🛡️ Safe', '🧠 Thoughtful', '❤️ Kind', '⭐ Responsible'];
+    var bx = W/2 - 210;
+    ctx.font = '13px "Nunito", Arial, sans-serif';
+    ctx.fillStyle = 'rgba(255,255,255,0.7)';
+    badges.forEach(function(b, i){
+      ctx.fillStyle = 'rgba(255,255,255,0.1)';
+      ctx.beginPath(); ctx.roundRect(bx + i*108 - 4, 492, 104, 32, 16); ctx.fill();
+      ctx.fillStyle = 'rgba(255,255,255,0.85)';
+      ctx.fillText(b, bx + i*108 + 48, 513);
+    });
+
+    // Footer
+    ctx.fillStyle = 'rgba(255,255,255,0.35)';
+    ctx.font = '11px "Nunito", Arial, sans-serif';
+    ctx.fillText('thinktwiceaboutai.netlify.app  •  © 2026 Malathy Shah', W/2, 572);
+  }
+
+  function downloadCert() {
+    var canvas = document.getElementById('certCanvas');
+    var link = document.createElement('a');
+    var sig = document.getElementById('pledgeSignature');
+    var name = sig ? sig.value.trim().replace(/\s+/g,'-') : 'ThinkTwice';
+    link.download = 'ThinkTwice-Certificate-' + name + '.png';
+    link.href = canvas.toDataURL('image/png');
+    link.click();
   }
 
   // ── LESSON 3 INTERACTIVITY ──
@@ -2983,6 +3119,21 @@
   </div>
   <div style="text-align:center;padding:24px 0 32px;font-size:14px;color:#7A7585;font-weight:500;">© 2026 by Malathy Shah. 💜</div>
 
+</div>
+
+<!-- CERTIFICATE MODAL -->
+<div id="cert-modal" style="display:none;position:fixed;inset:0;background:rgba(0,0,0,0.7);z-index:9999;display:none;align-items:center;justify-content:center;padding:20px;">
+  <div style="background:white;border-radius:24px;padding:32px;max-width:680px;width:100%;box-shadow:0 32px 80px rgba(0,0,0,0.35);position:relative;text-align:center;">
+    <button onclick="closeCertModal()" style="position:absolute;top:16px;right:18px;background:none;border:none;font-size:22px;cursor:pointer;color:#7A7585;line-height:1;">✕</button>
+    <div style="font-size:28px;margin-bottom:6px;">🏅</div>
+    <h2 style="font-size:22px;font-weight:900;color:#18171C;margin-bottom:4px;">Your certificate is ready!</h2>
+    <p style="font-size:14px;color:#7A7585;font-weight:500;margin-bottom:20px;">Download and share your ThinkTwice Promise.</p>
+    <canvas id="certCanvas" width="900" height="620" style="width:100%;border-radius:16px;border:1px solid #E5DEFA;"></canvas>
+    <div style="display:flex;gap:12px;justify-content:center;margin-top:20px;">
+      <button onclick="downloadCert()" style="background:linear-gradient(135deg,#6B3FA0,#8B5CF6);color:white;border:none;padding:14px 32px;border-radius:40px;font-size:16px;font-weight:900;font-family:'Nunito',sans-serif;cursor:pointer;display:inline-flex;align-items:center;gap:8px;">⬇️ Download Certificate</button>
+      <button onclick="closeCertModal()" style="background:#F5F0FF;color:#6B3FA0;border:none;padding:14px 24px;border-radius:40px;font-size:15px;font-weight:800;font-family:'Nunito',sans-serif;cursor:pointer;">Close</button>
+    </div>
+  </div>
 </div>
 
 </body>
