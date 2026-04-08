@@ -1574,62 +1574,72 @@
     skills:{ aiBasics:30, spotting:25, critical:35, creativity:25, citizenship:30 }
   };
 
+  // In-memory session timer (resets each page load — no localStorage needed)
+  window._sessionStart = Date.now();
+
   function loadAll() {
     try {
       var p  = localStorage.getItem('tt_profile');
       var pr = localStorage.getItem('tt_progress');
       if (p)  { var parsed = JSON.parse(p);  for (var k in parsed) userProfile[k]  = parsed[k]; }
       if (pr) { var parsed = JSON.parse(pr); for (var k in parsed) userProgress[k] = parsed[k]; }
+      // Avatar image stored separately to avoid quota issues
+      var img = localStorage.getItem('tt_avatar_img');
+      if (img) userProfile.avatarImg = img;
     } catch(e) {}
 
-    // Ensure arrays exist (guard against old saves missing new fields)
+    // Guard arrays
     if (!Array.isArray(userProgress.quizScores))  userProgress.quizScores  = [];
-    if (!Array.isArray(userProgress.lessonsList))  userProgress.lessonsList  = [];
+    if (!Array.isArray(userProgress.lessonsList))  userProgress.lessonsList = [];
     if (!Array.isArray(userProgress.achievements)) userProgress.achievements = [];
-    if (!Array.isArray(userProgress.streakDays))   userProgress.streakDays   = [false,false,false,false,false,false,false];
-    if (!Array.isArray(userProgress.goals))        userProgress.goals        = JSON.parse(JSON.stringify(DEFAULT_GOALS));
+    if (!Array.isArray(userProgress.streakDays))   userProgress.streakDays  = [false,false,false,false,false,false,false];
+    if (!Array.isArray(userProgress.goals))        userProgress.goals       = JSON.parse(JSON.stringify(DEFAULT_GOALS));
+    if (typeof userProgress.skills !== 'object' || !userProgress.skills)
+      userProgress.skills = { aiBasics:30, spotting:25, critical:35, creativity:25, citizenship:30 };
 
-    // Set memberSince on first visit
-    if (!userProfile.memberSince) {
+    // First visit
+    if (!userProfile.memberSince)
       userProfile.memberSince = new Date().toLocaleString('en-US',{month:'long',year:'numeric'});
-    }
 
-    // Streak logic
+    // Streak
     var today = new Date().toDateString();
     if (userProgress.lastVisitDate !== today) {
       var last = userProgress.lastVisitDate ? new Date(userProgress.lastVisitDate) : null;
       var diff = last ? Math.round((new Date(today) - last) / 86400000) : 0;
       if (diff === 1)    userProgress.currentStreak = (userProgress.currentStreak || 0) + 1;
       else if (diff > 1) userProgress.currentStreak = 1;
-      if ((userProgress.currentStreak || 1) > (userProgress.longestStreak || 1))
+      if ((userProgress.currentStreak||1) > (userProgress.longestStreak||1))
         userProgress.longestStreak = userProgress.currentStreak;
       userProgress.lastVisitDate = today;
-      var dayIdx = (new Date().getDay() + 6) % 7;
-      userProgress.streakDays[dayIdx] = true;
+      userProgress.streakDays[(new Date().getDay()+6)%7] = true;
     }
 
-    // Restore accumulated time from previous sessions
-    // _ttSessionStart stored in localStorage so it survives refreshes
-    var storedStart = localStorage.getItem('tt_session_start');
-    if (storedStart) {
-      // Page was refreshed mid-session — credit time up to now
-      var bonus = Math.floor((Date.now() - parseInt(storedStart)) / 60000);
-      if (bonus > 0 && bonus < 480) userProgress.timeLearningMins += bonus; // cap at 8h (sanity)
-    }
-    localStorage.setItem('tt_session_start', Date.now().toString());
-
+    window._sessionStart = Date.now(); // reset timer for this session
     applyAvatarEverywhere();
-    saveAll(); // persist streak + any bonus time immediately
+    saveAll();
   }
 
   function saveAll() {
     try {
-      // Flush elapsed minutes since last save without resetting start
-      // (start is updated only in loadAll, so no double-counting)
-      localStorage.setItem('tt_profile',  JSON.stringify(userProfile));
+      // Credit elapsed minutes since last save, then reset timer
+      var mins = Math.floor((Date.now() - (window._sessionStart || Date.now())) / 60000);
+      if (mins > 0 && mins < 480) {
+        userProgress.timeLearningMins = (userProgress.timeLearningMins || 0) + mins;
+        window._sessionStart = Date.now();
+      }
+
+      // Save avatar image separately (can be large base64)
+      if (userProfile.avatarImg) {
+        try { localStorage.setItem('tt_avatar_img', userProfile.avatarImg); } catch(e) {}
+      } else {
+        localStorage.removeItem('tt_avatar_img');
+      }
+
+      // Save profile without avatarImg (keep main storage small)
+      var profileToSave = {};
+      for (var k in userProfile) if (k !== 'avatarImg') profileToSave[k] = userProfile[k];
+      localStorage.setItem('tt_profile',  JSON.stringify(profileToSave));
       localStorage.setItem('tt_progress', JSON.stringify(userProgress));
-      // Keep session_start fresh so a refresh doesn't over-credit time
-      localStorage.setItem('tt_session_start', Date.now().toString());
     } catch(e) {}
   }
 
