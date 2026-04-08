@@ -1136,7 +1136,7 @@
       <div style="display:flex;align-items:center;gap:16px;">
         <div style="width:52px;height:52px;border-radius:14px;background:#EDE9FE;display:flex;align-items:center;justify-content:center;font-size:24px;">📖</div>
         <div>
-          <h2 style="font-size:30px;font-weight:900;color:#18171C;margin-bottom:2px;">Lessons</h2>
+          <h2 id="lessons-heading" style="font-size:30px;font-weight:900;color:#18171C;margin-bottom:2px;">Lessons</h2>
           <p style="font-size:15px;color:#7A7585;font-weight:500;">Three essential lessons to help you navigate AI with confidence.</p>
         </div>
       </div>
@@ -1159,6 +1159,7 @@
         </div>
         <div style="margin-top:auto;padding-top:16px;">
           <button onclick="showLesson1()" style="background:white;color:#5C35A0;border:none;padding:10px 20px;border-radius:24px;font-size:14px;font-weight:800;font-family:'Nunito',sans-serif;cursor:pointer;display:inline-flex;align-items:center;gap:6px;">Read More &rarr;</button>
+          <button id="done-btn-1" onclick="markLessonDone(this,1)" style="background:white;color:#5C35A0;border:1.5px solid #C4B5FD;padding:10px 20px;border-radius:24px;font-size:14px;font-weight:800;font-family:'Nunito',sans-serif;cursor:pointer;display:inline-flex;align-items:center;gap:6px;margin-top:10px;">⭐ Mark as Done</button>
         </div>
       </div>
 
@@ -1175,6 +1176,7 @@
         </div>
         <div style="margin-top:auto;padding-top:16px;">
           <button onclick="showLesson2()" style="background:white;color:#E8652A;border:none;padding:10px 20px;border-radius:24px;font-size:14px;font-weight:800;font-family:'Nunito',sans-serif;cursor:pointer;display:inline-flex;align-items:center;gap:6px;">Read More &rarr;</button>
+          <button id="done-btn-2" onclick="markLessonDone(this,2)" style="background:white;color:#E8652A;border:1.5px solid #FDBA8C;padding:10px 20px;border-radius:24px;font-size:14px;font-weight:800;font-family:'Nunito',sans-serif;cursor:pointer;display:inline-flex;align-items:center;gap:6px;margin-top:10px;">⭐ Mark as Done</button>
         </div>
       </div>
 
@@ -1191,6 +1193,7 @@
         </div>
         <div style="margin-top:auto;padding-top:16px;">
           <button onclick="showLesson3()" style="background:white;color:#1A9E52;border:none;padding:10px 20px;border-radius:24px;font-size:14px;font-weight:800;font-family:'Nunito',sans-serif;cursor:pointer;display:inline-flex;align-items:center;gap:6px;">Read More &rarr;</button>
+          <button id="done-btn-3" onclick="markLessonDone(this,3)" style="background:white;color:#1A9E52;border:1.5px solid #86EFAC;padding:10px 20px;border-radius:24px;font-size:14px;font-weight:800;font-family:'Nunito',sans-serif;cursor:pointer;display:inline-flex;align-items:center;gap:6px;margin-top:10px;">⭐ Mark as Done</button>
         </div>
       </div>
 
@@ -1477,6 +1480,80 @@
     }
     if (page === 'profile') renderProfilePage();
     window.scrollTo(0, 0);
+  }
+
+
+  // ── MARK LESSON AS DONE ──
+  function markLessonDone(btn, lessonNum) {
+    // Toggle: if already done, undo it
+    var isDone = btn.dataset.done === '1';
+    if (isDone) {
+      btn.dataset.done = '0';
+      btn.textContent = '⭐ Mark as Done';
+      var colors = ['#5C35A0','#E8652A','#1A9E52'];
+      var borders = ['1.5px solid #C4B5FD','1.5px solid #FDBA8C','1.5px solid #86EFAC'];
+      btn.style.background = 'white';
+      btn.style.color = colors[lessonNum - 1];
+      btn.style.border = borders[lessonNum - 1];
+      return;
+    }
+
+    // Mark done
+    btn.dataset.done = '1';
+    btn.innerHTML = '✅ Done!';
+    var doneColors = ['#5C35A0','#E8652A','#1A9E52'];
+    var doneBgs = ['#EDE9FE','#FDEBD8','#DCFCE7'];
+    btn.style.background = doneBgs[lessonNum - 1];
+    btn.style.color = doneColors[lessonNum - 1];
+    btn.style.border = '1.5px solid currentColor';
+
+    // Spawn a floating star that rises up toward the Lessons heading
+    var heading = document.getElementById('lessons-heading');
+    var btnRect = btn.getBoundingClientRect();
+    var headRect = heading ? heading.getBoundingClientRect() : btnRect;
+
+    // Start position: just above the button (in page coords)
+    var startX = btnRect.left + window.scrollX + btnRect.width / 2;
+    var startY = btnRect.top  + window.scrollY - 8;
+    var endX   = headRect.right + window.scrollX + 18;
+    var endY   = headRect.top   + window.scrollY + headRect.height / 2;
+
+    var star = document.createElement('span');
+    star.textContent = '⭐';
+    star.style.cssText = [
+      'position:absolute',
+      'left:' + startX + 'px',
+      'top:'  + startY + 'px',
+      'font-size:24px',
+      'pointer-events:none',
+      'z-index:99999',
+      'transition:transform 0s',
+      'will-change:transform,opacity'
+    ].join(';');
+    document.body.appendChild(star);
+
+    var dx = endX - startX;
+    var dy = endY - startY;
+    var duration = 900;
+    var start = null;
+
+    function animStar(ts) {
+      if (!start) start = ts;
+      var t = Math.min((ts - start) / duration, 1);
+      // ease out cubic
+      var e = 1 - Math.pow(1 - t, 3);
+      var cx = startX + dx * e;
+      var cy = startY + dy * e;
+      var scale = 1 + 0.4 * Math.sin(Math.PI * t);
+      var opacity = t < 0.75 ? 1 : 1 - (t - 0.75) / 0.25;
+      star.style.left    = cx + 'px';
+      star.style.top     = cy + 'px';
+      star.style.opacity = opacity;
+      star.style.transform = 'scale(' + scale + ')';
+      if (t < 1) requestAnimationFrame(animStar);
+      else star.remove();
+    }
+    requestAnimationFrame(animStar);
   }
 
   function showLesson1() {
