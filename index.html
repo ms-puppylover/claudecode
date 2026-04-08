@@ -1143,11 +1143,17 @@
       <button style="border:1.5px solid #6B3FA0;color:#6B3FA0;background:transparent;padding:11px 22px;border-radius:32px;font-size:14px;font-weight:700;font-family:'Nunito',sans-serif;cursor:pointer;white-space:nowrap;">View All Lessons &rarr;</button>
     </div>
 
+    <!-- Reset progress row -->
+    <div style="display:flex;justify-content:flex-end;margin-bottom:16px;">
+      <button id="reset-lessons-btn" onclick="resetLessonProgress()" style="background:transparent;border:1.5px solid #DDD5F8;color:#9B95A8;padding:8px 18px;border-radius:24px;font-size:13px;font-weight:700;font-family:'Nunito',sans-serif;cursor:pointer;display:inline-flex;align-items:center;gap:6px;transition:border-color 0.15s,color 0.15s;" onmouseover="this.style.borderColor='#6B3FA0';this.style.color='#6B3FA0'" onmouseout="this.style.borderColor='#DDD5F8';this.style.color='#9B95A8'">↺ Reset Lesson Progress</button>
+    </div>
+
     <!-- Three lesson cards -->
     <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:18px;padding-bottom:48px;">
 
       <!-- Card 01 — What AI Does Well -->
       <div style="background:#EEEAFC;border-radius:20px;padding:28px;display:flex;flex-direction:column;justify-content:space-between;min-height:320px;position:relative;overflow:hidden;">
+        <span id="star-badge-1" style="display:none;position:absolute;top:14px;right:14px;font-size:26px;z-index:10;filter:drop-shadow(0 2px 4px rgba(0,0,0,0.15));">⭐</span>
         <div>
           <div style="display:inline-flex;align-items:center;justify-content:center;width:38px;height:38px;border-radius:10px;background:#5C35A0;color:white;font-size:14px;font-weight:900;margin-bottom:18px;">01</div>
           <h3 style="font-size:24px;font-weight:900;color:#18171C;margin-bottom:10px;">What AI Does Well</h3>
@@ -1165,6 +1171,7 @@
 
       <!-- Card 02 — Where AI Can Go Wrong -->
       <div style="background:#FDEBD8;border-radius:20px;padding:28px;display:flex;flex-direction:column;justify-content:space-between;min-height:320px;position:relative;overflow:hidden;">
+        <span id="star-badge-2" style="display:none;position:absolute;top:14px;right:14px;font-size:26px;z-index:10;filter:drop-shadow(0 2px 4px rgba(0,0,0,0.15));">⭐</span>
         <div>
           <div style="display:inline-flex;align-items:center;justify-content:center;width:38px;height:38px;border-radius:10px;background:#E8652A;color:white;font-size:14px;font-weight:900;margin-bottom:18px;">02</div>
           <h3 style="font-size:24px;font-weight:900;color:#18171C;margin-bottom:10px;">Where AI Can Go Wrong</h3>
@@ -1182,6 +1189,7 @@
 
       <!-- Card 03 — How To Use AI Wisely -->
       <div style="background:#DCFCE7;border-radius:20px;padding:28px;display:flex;flex-direction:column;justify-content:space-between;min-height:320px;position:relative;overflow:hidden;">
+        <span id="star-badge-3" style="display:none;position:absolute;top:14px;right:14px;font-size:26px;z-index:10;filter:drop-shadow(0 2px 4px rgba(0,0,0,0.15));">⭐</span>
         <div>
           <div style="display:inline-flex;align-items:center;justify-content:center;width:38px;height:38px;border-radius:10px;background:#1A9E52;color:white;font-size:14px;font-weight:900;margin-bottom:18px;">03</div>
           <h3 style="font-size:24px;font-weight:900;color:#18171C;margin-bottom:10px;">How To Use AI Wisely</h3>
@@ -1479,82 +1487,56 @@
       if (page === 'ai' && lessonsLink) lessonsLink.classList.add('active');
     }
     if (page === 'profile') renderProfilePage();
+    if (page === 'ai') applyLessonDoneUI();
     window.scrollTo(0, 0);
   }
 
 
   // ── MARK LESSON AS DONE ──
-  function markLessonDone(btn, lessonNum) {
-    // Toggle: if already done, undo it
-    var isDone = btn.dataset.done === '1';
-    if (isDone) {
-      btn.dataset.done = '0';
-      btn.textContent = '⭐ Mark as Done';
-      var colors = ['#5C35A0','#E8652A','#1A9E52'];
-      var borders = ['1.5px solid #C4B5FD','1.5px solid #FDBA8C','1.5px solid #86EFAC'];
-      btn.style.background = 'white';
-      btn.style.color = colors[lessonNum - 1];
-      btn.style.border = borders[lessonNum - 1];
-      return;
-    }
+  var lessonDoneState = JSON.parse(localStorage.getItem('tt_lessons_done') || '{}');
 
-    // Mark done
-    btn.dataset.done = '1';
-    btn.innerHTML = '✅ Done!';
-    var doneColors = ['#5C35A0','#E8652A','#1A9E52'];
-    var doneBgs = ['#EDE9FE','#FDEBD8','#DCFCE7'];
-    btn.style.background = doneBgs[lessonNum - 1];
-    btn.style.color = doneColors[lessonNum - 1];
-    btn.style.border = '1.5px solid currentColor';
-
-    // Spawn a floating star that rises up toward the Lessons heading
-    var heading = document.getElementById('lessons-heading');
-    var btnRect = btn.getBoundingClientRect();
-    var headRect = heading ? heading.getBoundingClientRect() : btnRect;
-
-    // Start position: just above the button (in page coords)
-    var startX = btnRect.left + window.scrollX + btnRect.width / 2;
-    var startY = btnRect.top  + window.scrollY - 8;
-    var endX   = headRect.right + window.scrollX + 18;
-    var endY   = headRect.top   + window.scrollY + headRect.height / 2;
-
-    var star = document.createElement('span');
-    star.textContent = '⭐';
-    star.style.cssText = [
-      'position:absolute',
-      'left:' + startX + 'px',
-      'top:'  + startY + 'px',
-      'font-size:24px',
-      'pointer-events:none',
-      'z-index:99999',
-      'transition:transform 0s',
-      'will-change:transform,opacity'
-    ].join(';');
-    document.body.appendChild(star);
-
-    var dx = endX - startX;
-    var dy = endY - startY;
-    var duration = 900;
-    var start = null;
-
-    function animStar(ts) {
-      if (!start) start = ts;
-      var t = Math.min((ts - start) / duration, 1);
-      // ease out cubic
-      var e = 1 - Math.pow(1 - t, 3);
-      var cx = startX + dx * e;
-      var cy = startY + dy * e;
-      var scale = 1 + 0.4 * Math.sin(Math.PI * t);
-      var opacity = t < 0.75 ? 1 : 1 - (t - 0.75) / 0.25;
-      star.style.left    = cx + 'px';
-      star.style.top     = cy + 'px';
-      star.style.opacity = opacity;
-      star.style.transform = 'scale(' + scale + ')';
-      if (t < 1) requestAnimationFrame(animStar);
-      else star.remove();
-    }
-    requestAnimationFrame(animStar);
+  function applyLessonDoneUI() {
+    [1,2,3].forEach(function(n) {
+      var btn   = document.getElementById('done-btn-' + n);
+      var badge = document.getElementById('star-badge-' + n);
+      var done  = lessonDoneState[n];
+      if (!btn || !badge) return;
+      if (done) {
+        badge.style.display = 'inline';
+        btn.innerHTML = '✅ Done!';
+        var doneBgs    = {1:'#EDE9FE', 2:'#FDEBD8', 3:'#DCFCE7'};
+        var doneColors = {1:'#5C35A0', 2:'#C2410C', 3:'#15803D'};
+        btn.style.background = doneBgs[n];
+        btn.style.color      = doneColors[n];
+        btn.style.border     = '1.5px solid currentColor';
+      } else {
+        badge.style.display = 'none';
+        btn.innerHTML = '⭐ Mark as Done';
+        var idleBgs    = {1:'white', 2:'white', 3:'white'};
+        var idleColors = {1:'#5C35A0', 2:'#E8652A', 3:'#1A9E52'};
+        var idleBorders = {1:'1.5px solid #C4B5FD', 2:'1.5px solid #FDBA8C', 3:'1.5px solid #86EFAC'};
+        btn.style.background = idleBgs[n];
+        btn.style.color      = idleColors[n];
+        btn.style.border     = idleBorders[n];
+      }
+    });
   }
+
+  function markLessonDone(btn, lessonNum) {
+    var isDone = !!lessonDoneState[lessonNum];
+    lessonDoneState[lessonNum] = !isDone;
+    localStorage.setItem('tt_lessons_done', JSON.stringify(lessonDoneState));
+    applyLessonDoneUI();
+  }
+
+  function resetLessonProgress() {
+    lessonDoneState = {};
+    localStorage.removeItem('tt_lessons_done');
+    applyLessonDoneUI();
+  }
+
+  // Re-apply state whenever the AI page is shown
+  var _origShowPage = typeof showPage !== 'undefined' ? showPage : null;
 
   function showLesson1() {
     ['page-home','page-team','page-ai','page-lesson-1','page-lesson-2'].forEach(id => {
