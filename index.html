@@ -2710,7 +2710,7 @@
         <div style="font-size:26px;margin-bottom:10px;">🧠</div>
         <h4 style="font-size:15px;font-weight:900;color:#18171C;margin-bottom:6px;">Think Before You Share</h4>
         <p style="font-size:13px;color:#3D3B45;font-weight:500;line-height:1.5;">Use the THINK checklist to pause and reflect.</p>
-        <button class="toolkit-tab" onclick="openToolkit('think')" style="margin-top:14px;background:#BFDBFE;color:#2563EB;border:none;padding:9px 18px;border-radius:20px;font-size:13px;font-weight:800;font-family:'Nunito',sans-serif;cursor:pointer;">Open Checklist</button>
+        <button onclick="document.getElementById('ai-use-checklist').scrollIntoView({behavior:'smooth',block:'start'});event.stopPropagation();" style="margin-top:14px;background:#BFDBFE;color:#2563EB;border:none;padding:9px 18px;border-radius:20px;font-size:13px;font-weight:800;font-family:'Nunito',sans-serif;cursor:pointer;">Open Checklist ↓</button>
       </div>
       <div id="tab-prompt" class="toolkit-tab" onclick="openToolkit('prompt')" style="background:#FFFBEB;border:1.5px solid #FCD34D;border-radius:18px;padding:20px 16px;cursor:pointer;text-align:left;">
         <div style="font-size:26px;margin-bottom:10px;">✏️</div>
@@ -2916,7 +2916,7 @@
 
 
   <!-- SELF-CHECK SECTION -->
-  <div style="margin:40px 28px 40px;">
+  <div id="ai-use-checklist" style="margin:40px 28px 40px;">
     <h3 style="font-size:26px;font-weight:900;color:#18171C;margin-bottom:6px;">Your AI Use Checklist</h3>
     <p style="font-size:15px;color:#3D3B45;font-weight:500;margin-bottom:22px;">Check each box honestly before you submit or share anything made with AI.</p>
 
