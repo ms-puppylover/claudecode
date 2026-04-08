@@ -2000,9 +2000,11 @@
     document.getElementById('pledgeConfirm').style.display = 'block';
     trackSmartChoice();
     saveAll();
-    // Draw and show the certificate
-    var name = sig.value.trim();
-    drawCertificate(name);
+    // Draw and show the certificate — use profile name if set, otherwise fall back to signature
+    var certName = (typeof userProfile !== 'undefined' && userProfile.name && userProfile.name !== 'Friend')
+      ? userProfile.name
+      : sig.value.trim();
+    drawCertificate(certName);
     var modal = document.getElementById('cert-modal');
     modal.style.display = 'flex';
   }
