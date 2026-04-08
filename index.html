@@ -1455,200 +1455,6 @@
     </div>
   </div>
 
-  <!-- SELF-CHECK SECTION -->
-  <div style="margin:0 28px 40px;">
-    <h3 style="font-size:26px;font-weight:900;color:#18171C;margin-bottom:6px;">Your AI Use Checklist</h3>
-    <p style="font-size:15px;color:#3D3B45;font-weight:500;margin-bottom:22px;">Check each box honestly before you submit or share anything made with AI.</p>
-
-    <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:16px;">
-
-        <!-- Card 1: Before I ask AI -->
-        <div style="background:#F0FDF4;border-radius:20px;padding:20px;display:flex;flex-direction:column;gap:12px;border:1.5px solid #BBF7D0;">
-          <div style="display:flex;align-items:center;justify-content:space-between;">
-            <div style="display:flex;align-items:center;gap:8px;"><span style="font-size:22px;">🛡️</span><span style="font-size:22px;font-weight:900;color:#15803D;">1</span></div>
-            <span style="font-size:20px;">🔒</span>
-          </div>
-          <div>
-            <div style="font-size:16px;font-weight:900;color:#15803D;">Before I ask AI...</div>
-            <div style="font-size:12px;color:#166534;font-weight:600;margin-top:2px;">I keep my info safe and ask smart questions.</div>
-          </div>
-          <div style="display:flex;flex-direction:column;gap:8px;">
-            <label style="display:flex;align-items:flex-start;gap:8px;cursor:pointer;"><input type="checkbox" onchange="if(this.checked)trackSmartChoice();" style="margin-top:2px;accent-color:#15803D;width:16px;height:16px;flex-shrink:0;"><span style="font-size:13px;color:#18171C;font-weight:600;line-height:1.4;">I did NOT include personal info (name, school, address, passwords)</span></label>
-            <label style="display:flex;align-items:flex-start;gap:8px;cursor:pointer;"><input type="checkbox" onchange="if(this.checked)trackSmartChoice();" style="margin-top:2px;accent-color:#15803D;width:16px;height:16px;flex-shrink:0;"><span style="font-size:13px;color:#18171C;font-weight:600;line-height:1.4;">My question is safe and appropriate</span></label>
-            <label style="display:flex;align-items:flex-start;gap:8px;cursor:pointer;"><input type="checkbox" onchange="if(this.checked)trackSmartChoice();" style="margin-top:2px;accent-color:#15803D;width:16px;height:16px;flex-shrink:0;"><span style="font-size:13px;color:#18171C;font-weight:600;line-height:1.4;">I actually need help (not just laziness)</span></label>
-          </div>
-          <div style="background:#DCFCE7;border-radius:12px;padding:10px 12px;margin-top:auto;display:flex;align-items:center;gap:8px;">
-            <span style="font-size:18px;">🛡️</span>
-            <span style="font-size:12px;color:#15803D;font-weight:700;line-height:1.4;">Never share personal info with AI. It's not a real person.</span>
-          </div>
-        </div>
-
-        <!-- Card 2: While using AI -->
-        <div style="background:#EFF6FF;border-radius:20px;padding:20px;display:flex;flex-direction:column;gap:12px;border:1.5px solid #BFDBFE;">
-          <div style="display:flex;align-items:center;justify-content:space-between;">
-            <div style="display:flex;align-items:center;gap:8px;"><span style="font-size:22px;">🧠</span><span style="font-size:22px;font-weight:900;color:#1D4ED8;">2</span></div>
-            <span style="font-size:20px;">💡</span>
-          </div>
-          <div>
-            <div style="font-size:16px;font-weight:900;color:#1D4ED8;">While using AI...</div>
-            <div style="font-size:12px;color:#1E40AF;font-weight:600;margin-top:2px;">I focus on learning, not just getting answers.</div>
-          </div>
-          <div style="display:flex;flex-direction:column;gap:8px;">
-            <label style="display:flex;align-items:flex-start;gap:8px;cursor:pointer;"><input type="checkbox" onchange="if(this.checked)trackSmartChoice();" style="margin-top:2px;accent-color:#1D4ED8;width:16px;height:16px;flex-shrink:0;"><span style="font-size:13px;color:#18171C;font-weight:600;line-height:1.4;">I understand the answer <span style="font-weight:400;color:#7A7585;">(not just copying it)</span></span></label>
-            <label style="display:flex;align-items:flex-start;gap:8px;cursor:pointer;"><input type="checkbox" onchange="if(this.checked)trackSmartChoice();" style="margin-top:2px;accent-color:#1D4ED8;width:16px;height:16px;flex-shrink:0;"><span style="font-size:13px;color:#18171C;font-weight:600;line-height:1.4;">I can explain it in my own words</span></label>
-            <label style="display:flex;align-items:flex-start;gap:8px;cursor:pointer;"><input type="checkbox" onchange="if(this.checked)trackSmartChoice();" style="margin-top:2px;accent-color:#1D4ED8;width:16px;height:16px;flex-shrink:0;"><span style="font-size:13px;color:#18171C;font-weight:600;line-height:1.4;">I asked follow-up questions to learn more</span></label>
-          </div>
-          <div style="background:#DBEAFE;border-radius:12px;padding:10px 12px;margin-top:auto;display:flex;align-items:center;gap:8px;">
-            <span style="font-size:18px;">🧠</span>
-            <span style="font-size:12px;color:#1D4ED8;font-weight:700;line-height:1.4;">AI is your tutor, not your shortcut. Curiosity = real growth!</span>
-          </div>
-        </div>
-
-        <!-- Card 3: For schoolwork -->
-        <div style="background:#FFFBEB;border-radius:20px;padding:20px;display:flex;flex-direction:column;gap:12px;border:1.5px solid #FDE68A;">
-          <div style="display:flex;align-items:center;justify-content:space-between;">
-            <div style="display:flex;align-items:center;gap:8px;"><span style="font-size:22px;">✏️</span><span style="font-size:22px;font-weight:900;color:#D97706;">3</span></div>
-            <span style="font-size:20px;">🎓</span>
-          </div>
-          <div>
-            <div style="font-size:16px;font-weight:900;color:#D97706;">For schoolwork...</div>
-            <div style="font-size:12px;color:#92400E;font-weight:600;margin-top:2px;">I do my own thinking and make it my own.</div>
-          </div>
-          <div style="display:flex;flex-direction:column;gap:8px;">
-            <label style="display:flex;align-items:flex-start;gap:8px;cursor:pointer;"><input type="checkbox" onchange="if(this.checked)trackSmartChoice();" style="margin-top:2px;accent-color:#D97706;width:16px;height:16px;flex-shrink:0;"><span style="font-size:13px;color:#18171C;font-weight:600;line-height:1.4;">I did NOT copy-paste AI answers</span></label>
-            <label style="display:flex;align-items:flex-start;gap:8px;cursor:pointer;"><input type="checkbox" onchange="if(this.checked)trackSmartChoice();" style="margin-top:2px;accent-color:#D97706;width:16px;height:16px;flex-shrink:0;"><span style="font-size:13px;color:#18171C;font-weight:600;line-height:1.4;">I edited and added my own thinking</span></label>
-            <label style="display:flex;align-items:flex-start;gap:8px;cursor:pointer;"><input type="checkbox" onchange="if(this.checked)trackSmartChoice();" style="margin-top:2px;accent-color:#D97706;width:16px;height:16px;flex-shrink:0;"><span style="font-size:13px;color:#18171C;font-weight:600;line-height:1.4;">This still feels like my work</span></label>
-          </div>
-          <div style="background:#FEF3C7;border-radius:12px;padding:10px 12px;margin-top:auto;display:flex;align-items:center;gap:8px;">
-            <span style="font-size:18px;">🔄</span>
-            <span style="font-size:12px;color:#92400E;font-weight:700;line-height:1.4;">IF I copied → THEN I redo it in my own words.</span>
-          </div>
-        </div>
-
-        <!-- Card 4: I Promise -->
-        <div style="background:linear-gradient(135deg,#6B3FA0,#8B5CF6);border-radius:20px;padding:20px;display:flex;flex-direction:column;gap:12px;">
-          <div style="display:flex;align-items:center;gap:8px;">
-            <span style="font-size:28px;">🏅</span>
-            <div>
-              <div style="font-size:11px;font-weight:900;color:rgba(255,255,255,0.8);letter-spacing:0.1em;">I PROMISE TO</div>
-              <div style="font-size:18px;font-weight:900;color:white;">THINK TWICE</div>
-            </div>
-          </div>
-          <p style="font-size:13px;color:rgba(255,255,255,0.9);line-height:1.5;font-weight:600;">I will use AI to learn, create, and make a positive impact. I will be safe, honest, and kind.</p>
-          <div style="background:white;border-radius:12px;padding:10px 14px;">
-            <input id="pledgeSignature" type="text" placeholder="Your signature" style="width:100%;border:none;outline:none;font-size:18px;font-family:'Brush Script MT',cursive;color:#18171C;background:transparent;"/>
-            <div style="height:1px;background:#E5DEFA;margin-top:4px;"></div>
-            <div style="font-size:10px;color:#9B95A8;margin-top:4px;">Your signature</div>
-          </div>
-          <button onclick="makePledge()" style="background:white;color:#6B3FA0;border:none;padding:12px;border-radius:14px;font-size:15px;font-weight:900;font-family:'Nunito',sans-serif;cursor:pointer;width:100%;">I PROMISE 🤚</button>
-          <div id="pledgeConfirm" style="display:none;background:rgba(255,255,255,0.2);border-radius:10px;padding:8px;text-align:center;font-size:12px;color:white;font-weight:800;">✅ Promise made! Keep it up! 💜</div>
-        </div>
-
-        <!-- Card 5: Before I believe something -->
-        <div style="background:#F5F3FF;border-radius:20px;padding:20px;display:flex;flex-direction:column;gap:12px;border:1.5px solid #DDD6FE;">
-          <div style="display:flex;align-items:center;justify-content:space-between;">
-            <div style="display:flex;align-items:center;gap:8px;"><span style="font-size:22px;">🔍</span><span style="font-size:22px;font-weight:900;color:#6B3FA0;">4</span></div>
-            <span style="font-size:20px;">❓</span>
-          </div>
-          <div>
-            <div style="font-size:16px;font-weight:900;color:#6B3FA0;">Before I believe something...</div>
-            <div style="font-size:12px;color:#5C35A0;font-weight:600;margin-top:2px;">I check if it could be fake.</div>
-          </div>
-          <div style="display:flex;flex-direction:column;gap:8px;">
-            <label style="display:flex;align-items:flex-start;gap:8px;cursor:pointer;"><input type="checkbox" onchange="if(this.checked){trackSmartChoice();if(typeof userProgress!=='undefined')userProgress.fakesSpotted++;}" style="margin-top:2px;accent-color:#6B3FA0;width:16px;height:16px;flex-shrink:0;"><span style="font-size:13px;color:#18171C;font-weight:600;line-height:1.4;">I checked if it could be fake</span></label>
-            <label style="display:flex;align-items:flex-start;gap:8px;cursor:pointer;"><input type="checkbox" onchange="if(this.checked)trackSmartChoice();" style="margin-top:2px;accent-color:#6B3FA0;width:16px;height:16px;flex-shrink:0;"><span style="font-size:13px;color:#18171C;font-weight:600;line-height:1.4;">I asked, "Is this too perfect?"</span></label>
-            <label style="display:flex;align-items:flex-start;gap:8px;cursor:pointer;"><input type="checkbox" onchange="if(this.checked)trackSmartChoice();" style="margin-top:2px;accent-color:#6B3FA0;width:16px;height:16px;flex-shrink:0;"><span style="font-size:13px;color:#18171C;font-weight:600;line-height:1.4;">I verified with another source</span></label>
-          </div>
-          <div style="background:#EDE9FE;border-radius:12px;padding:10px 12px;margin-top:auto;">
-            <div style="font-size:12px;color:#5C35A0;font-weight:700;line-height:1.4;margin-bottom:4px;">Perfect images. Flawless text. That's a red flag!</div>
-            <a href="#" onclick="showLesson2();return false;" style="font-size:12px;color:#6B3FA0;font-weight:800;text-decoration:none;">Try our AI detector → ↗</a>
-          </div>
-        </div>
-
-        <!-- Card 6: How I use AI with others -->
-        <div style="background:#FFF0F6;border-radius:20px;padding:20px;display:flex;flex-direction:column;gap:12px;border:1.5px solid #FBCFE8;">
-          <div style="display:flex;align-items:center;justify-content:space-between;">
-            <div style="display:flex;align-items:center;gap:8px;"><span style="font-size:22px;">💗</span><span style="font-size:22px;font-weight:900;color:#DB2777;">5</span></div>
-            <span style="font-size:20px;">😍</span>
-          </div>
-          <div>
-            <div style="font-size:16px;font-weight:900;color:#DB2777;">How I use AI with others...</div>
-            <div style="font-size:12px;color:#9D174D;font-weight:600;margin-top:2px;">I choose kindness and positive impact.</div>
-          </div>
-          <div style="display:flex;flex-direction:column;gap:8px;">
-            <label style="display:flex;align-items:flex-start;gap:8px;cursor:pointer;"><input type="checkbox" onchange="if(this.checked)trackSmartChoice();" style="margin-top:2px;accent-color:#DB2777;width:16px;height:16px;flex-shrink:0;"><span style="font-size:13px;color:#18171C;font-weight:600;line-height:1.4;">I did NOT make fake images/accounts</span></label>
-            <label style="display:flex;align-items:flex-start;gap:8px;cursor:pointer;"><input type="checkbox" onchange="if(this.checked)trackSmartChoice();" style="margin-top:2px;accent-color:#DB2777;width:16px;height:16px;flex-shrink:0;"><span style="font-size:13px;color:#18171C;font-weight:600;line-height:1.4;">I did NOT use AI to bully or embarrass</span></label>
-            <label style="display:flex;align-items:flex-start;gap:8px;cursor:pointer;"><input type="checkbox" onchange="if(this.checked)trackSmartChoice();" style="margin-top:2px;accent-color:#DB2777;width:16px;height:16px;flex-shrink:0;"><span style="font-size:13px;color:#18171C;font-weight:600;line-height:1.4;">I used AI in a positive way</span></label>
-          </div>
-          <div style="background:#FCE7F3;border-radius:12px;padding:10px 12px;margin-top:auto;display:flex;align-items:center;gap:8px;">
-            <span style="font-size:18px;">💗</span>
-            <span style="font-size:12px;color:#9D174D;font-weight:700;line-height:1.4;">AI can create a lot. Kindness creates more.</span>
-          </div>
-        </div>
-
-        <!-- Card 7: Final Think Twice Check -->
-        <div style="background:#F0F9FF;border-radius:20px;padding:20px;display:flex;flex-direction:column;gap:12px;border:1.5px solid #BAE6FD;">
-          <div style="display:flex;align-items:center;justify-content:space-between;">
-            <div style="display:flex;align-items:center;gap:8px;"><span style="font-size:22px;">🛡️</span><span style="font-size:22px;font-weight:900;color:#0369A1;">6</span></div>
-            <span style="font-size:20px;">🌟</span>
-          </div>
-          <div>
-            <div style="font-size:16px;font-weight:900;color:#0369A1;">Final "Think Twice" Check</div>
-            <div style="font-size:12px;color:#075985;font-weight:600;margin-top:2px;">Before I click submit or share...</div>
-          </div>
-          <div style="display:flex;flex-direction:column;gap:10px;">
-            <div style="display:flex;align-items:center;justify-content:space-between;background:white;border-radius:10px;padding:8px 12px;">
-              <div style="display:flex;align-items:center;gap:6px;"><span style="font-size:16px;">🛡️</span><span style="font-size:13px;font-weight:700;color:#18171C;">Is this safe?</span></div>
-              <div style="display:flex;gap:8px;">
-                <label style="display:flex;align-items:center;gap:4px;cursor:pointer;font-size:12px;font-weight:700;color:#15803D;"><input type="radio" name="q_safe" value="yes" style="accent-color:#15803D;"> Yes</label>
-                <label style="display:flex;align-items:center;gap:4px;cursor:pointer;font-size:12px;font-weight:700;color:#DC2626;"><input type="radio" name="q_safe" value="no" style="accent-color:#DC2626;"> No</label>
-              </div>
-            </div>
-            <div style="display:flex;align-items:center;justify-content:space-between;background:white;border-radius:10px;padding:8px 12px;">
-              <div style="display:flex;align-items:center;gap:6px;"><span style="font-size:16px;">🧡</span><span style="font-size:13px;font-weight:700;color:#18171C;">Is this honest?</span></div>
-              <div style="display:flex;gap:8px;">
-                <label style="display:flex;align-items:center;gap:4px;cursor:pointer;font-size:12px;font-weight:700;color:#15803D;"><input type="radio" name="q_honest" value="yes" style="accent-color:#15803D;"> Yes</label>
-                <label style="display:flex;align-items:center;gap:4px;cursor:pointer;font-size:12px;font-weight:700;color:#DC2626;"><input type="radio" name="q_honest" value="no" style="accent-color:#DC2626;"> No</label>
-              </div>
-            </div>
-            <div style="display:flex;align-items:center;justify-content:space-between;background:white;border-radius:10px;padding:8px 12px;">
-              <div style="display:flex;align-items:center;gap:6px;"><span style="font-size:16px;">😊</span><span style="font-size:13px;font-weight:700;color:#18171C;">Is this kind?</span></div>
-              <div style="display:flex;gap:8px;">
-                <label style="display:flex;align-items:center;gap:4px;cursor:pointer;font-size:12px;font-weight:700;color:#15803D;"><input type="radio" name="q_kind" value="yes" style="accent-color:#15803D;"> Yes</label>
-                <label style="display:flex;align-items:center;gap:4px;cursor:pointer;font-size:12px;font-weight:700;color:#DC2626;"><input type="radio" name="q_kind" value="no" style="accent-color:#DC2626;"> No</label>
-              </div>
-            </div>
-          </div>
-          <div style="background:#FEE2E2;border-radius:12px;padding:10px 12px;margin-top:auto;display:flex;align-items:center;gap:8px;">
-            <span style="font-size:18px;">🔴</span>
-            <span style="font-size:12px;color:#991B1B;font-weight:700;line-height:1.4;">If ANY answer is no → ✋ STOP and rethink.</span>
-          </div>
-        </div>
-
-        <!-- Card 8: Why This Matters -->
-        <div style="background:white;border-radius:20px;padding:20px;display:flex;flex-direction:column;gap:10px;border:1.5px solid #E5DEFA;">
-          <div style="font-size:16px;font-weight:900;color:#18171C;margin-bottom:4px;">WHY THIS MATTERS</div>
-          <div style="display:flex;flex-direction:column;gap:8px;">
-            <div style="display:flex;align-items:center;gap:10px;"><span style="font-size:20px;">🌍</span><span style="font-size:13px;font-weight:700;color:#18171C;">Protects your privacy</span></div>
-            <div style="display:flex;align-items:center;gap:10px;"><span style="font-size:20px;">🔒</span><span style="font-size:13px;font-weight:700;color:#18171C;">Helps you learn deeply</span></div>
-            <div style="display:flex;align-items:center;gap:10px;"><span style="font-size:20px;">🎓</span><span style="font-size:13px;font-weight:700;color:#18171C;">Keeps school fair</span></div>
-            <div style="display:flex;align-items:center;gap:10px;"><span style="font-size:20px;">❤️</span><span style="font-size:13px;font-weight:700;color:#18171C;">Spreads kindness</span></div>
-            <div style="display:flex;align-items:center;gap:10px;"><span style="font-size:20px;">⭐</span><span style="font-size:13px;font-weight:700;color:#18171C;">Builds your future</span></div>
-          </div>
-          <div style="background:#F5F0FF;border-radius:12px;padding:10px 12px;margin-top:auto;text-align:center;">
-            <span style="font-size:12px;color:#6B3FA0;font-weight:800;">✨ Small checks. Big impact. ✨</span>
-          </div>
-        </div>
-
-    </div>
-  </div>
-
-  <!-- GOAL BANNER -->
-  <div style="background:#FEF9EC;border:1px solid #F5D87A;border-radius:16px;margin:0 28px 48px;padding:18px 28px;display:flex;align-items:center;justify-content:center;gap:10px;">
-    <span style="font-size:22px;">⭐</span>
-    <p style="font-size:15px;font-weight:700;color:#18171C;">Your goal: Use AI as a coach, not a crutch. Your growth matters more than a perfect grade. 💜</p>
-  </div>
-
   <!-- BACK BUTTON -->
   <div style="padding:0 40px 48px;">
     <button onclick="showPage('ai',null)" style="background:white;border:1.5px solid #C4B5FD;color:#6B3FA0;font-size:14px;font-weight:800;padding:12px 24px;border-radius:32px;cursor:pointer;font-family:'Nunito',sans-serif;display:inline-flex;align-items:center;gap:8px;">← Back to Lessons</button>
@@ -2971,6 +2777,196 @@
       <p style="font-size:14px;font-weight:700;color:#18171C;">What will you create today? 💚</p>
     </div>
   </div>
+
+
+  <!-- SELF-CHECK SECTION -->
+  <div style="margin:0 28px 40px;">
+    <h3 style="font-size:26px;font-weight:900;color:#18171C;margin-bottom:6px;">Your AI Use Checklist</h3>
+    <p style="font-size:15px;color:#3D3B45;font-weight:500;margin-bottom:22px;">Check each box honestly before you submit or share anything made with AI.</p>
+
+    <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:16px;">
+
+        <!-- Card 1: Before I ask AI -->
+        <div style="background:#F0FDF4;border-radius:20px;padding:20px;display:flex;flex-direction:column;gap:12px;border:1.5px solid #BBF7D0;">
+          <div style="display:flex;align-items:center;justify-content:space-between;">
+            <div style="display:flex;align-items:center;gap:8px;"><span style="font-size:22px;">🛡️</span><span style="font-size:22px;font-weight:900;color:#15803D;">1</span></div>
+            <span style="font-size:20px;">🔒</span>
+          </div>
+          <div>
+            <div style="font-size:16px;font-weight:900;color:#15803D;">Before I ask AI...</div>
+            <div style="font-size:12px;color:#166534;font-weight:600;margin-top:2px;">I keep my info safe and ask smart questions.</div>
+          </div>
+          <div style="display:flex;flex-direction:column;gap:8px;">
+            <label style="display:flex;align-items:flex-start;gap:8px;cursor:pointer;"><input type="checkbox" onchange="if(this.checked)trackSmartChoice();" style="margin-top:2px;accent-color:#15803D;width:16px;height:16px;flex-shrink:0;"><span style="font-size:13px;color:#18171C;font-weight:600;line-height:1.4;">I did NOT include personal info (name, school, address, passwords)</span></label>
+            <label style="display:flex;align-items:flex-start;gap:8px;cursor:pointer;"><input type="checkbox" onchange="if(this.checked)trackSmartChoice();" style="margin-top:2px;accent-color:#15803D;width:16px;height:16px;flex-shrink:0;"><span style="font-size:13px;color:#18171C;font-weight:600;line-height:1.4;">My question is safe and appropriate</span></label>
+            <label style="display:flex;align-items:flex-start;gap:8px;cursor:pointer;"><input type="checkbox" onchange="if(this.checked)trackSmartChoice();" style="margin-top:2px;accent-color:#15803D;width:16px;height:16px;flex-shrink:0;"><span style="font-size:13px;color:#18171C;font-weight:600;line-height:1.4;">I actually need help (not just laziness)</span></label>
+          </div>
+          <div style="background:#DCFCE7;border-radius:12px;padding:10px 12px;margin-top:auto;display:flex;align-items:center;gap:8px;">
+            <span style="font-size:18px;">🛡️</span>
+            <span style="font-size:12px;color:#15803D;font-weight:700;line-height:1.4;">Never share personal info with AI. It's not a real person.</span>
+          </div>
+        </div>
+
+        <!-- Card 2: While using AI -->
+        <div style="background:#EFF6FF;border-radius:20px;padding:20px;display:flex;flex-direction:column;gap:12px;border:1.5px solid #BFDBFE;">
+          <div style="display:flex;align-items:center;justify-content:space-between;">
+            <div style="display:flex;align-items:center;gap:8px;"><span style="font-size:22px;">🧠</span><span style="font-size:22px;font-weight:900;color:#1D4ED8;">2</span></div>
+            <span style="font-size:20px;">💡</span>
+          </div>
+          <div>
+            <div style="font-size:16px;font-weight:900;color:#1D4ED8;">While using AI...</div>
+            <div style="font-size:12px;color:#1E40AF;font-weight:600;margin-top:2px;">I focus on learning, not just getting answers.</div>
+          </div>
+          <div style="display:flex;flex-direction:column;gap:8px;">
+            <label style="display:flex;align-items:flex-start;gap:8px;cursor:pointer;"><input type="checkbox" onchange="if(this.checked)trackSmartChoice();" style="margin-top:2px;accent-color:#1D4ED8;width:16px;height:16px;flex-shrink:0;"><span style="font-size:13px;color:#18171C;font-weight:600;line-height:1.4;">I understand the answer <span style="font-weight:400;color:#7A7585;">(not just copying it)</span></span></label>
+            <label style="display:flex;align-items:flex-start;gap:8px;cursor:pointer;"><input type="checkbox" onchange="if(this.checked)trackSmartChoice();" style="margin-top:2px;accent-color:#1D4ED8;width:16px;height:16px;flex-shrink:0;"><span style="font-size:13px;color:#18171C;font-weight:600;line-height:1.4;">I can explain it in my own words</span></label>
+            <label style="display:flex;align-items:flex-start;gap:8px;cursor:pointer;"><input type="checkbox" onchange="if(this.checked)trackSmartChoice();" style="margin-top:2px;accent-color:#1D4ED8;width:16px;height:16px;flex-shrink:0;"><span style="font-size:13px;color:#18171C;font-weight:600;line-height:1.4;">I asked follow-up questions to learn more</span></label>
+          </div>
+          <div style="background:#DBEAFE;border-radius:12px;padding:10px 12px;margin-top:auto;display:flex;align-items:center;gap:8px;">
+            <span style="font-size:18px;">🧠</span>
+            <span style="font-size:12px;color:#1D4ED8;font-weight:700;line-height:1.4;">AI is your tutor, not your shortcut. Curiosity = real growth!</span>
+          </div>
+        </div>
+
+        <!-- Card 3: For schoolwork -->
+        <div style="background:#FFFBEB;border-radius:20px;padding:20px;display:flex;flex-direction:column;gap:12px;border:1.5px solid #FDE68A;">
+          <div style="display:flex;align-items:center;justify-content:space-between;">
+            <div style="display:flex;align-items:center;gap:8px;"><span style="font-size:22px;">✏️</span><span style="font-size:22px;font-weight:900;color:#D97706;">3</span></div>
+            <span style="font-size:20px;">🎓</span>
+          </div>
+          <div>
+            <div style="font-size:16px;font-weight:900;color:#D97706;">For schoolwork...</div>
+            <div style="font-size:12px;color:#92400E;font-weight:600;margin-top:2px;">I do my own thinking and make it my own.</div>
+          </div>
+          <div style="display:flex;flex-direction:column;gap:8px;">
+            <label style="display:flex;align-items:flex-start;gap:8px;cursor:pointer;"><input type="checkbox" onchange="if(this.checked)trackSmartChoice();" style="margin-top:2px;accent-color:#D97706;width:16px;height:16px;flex-shrink:0;"><span style="font-size:13px;color:#18171C;font-weight:600;line-height:1.4;">I did NOT copy-paste AI answers</span></label>
+            <label style="display:flex;align-items:flex-start;gap:8px;cursor:pointer;"><input type="checkbox" onchange="if(this.checked)trackSmartChoice();" style="margin-top:2px;accent-color:#D97706;width:16px;height:16px;flex-shrink:0;"><span style="font-size:13px;color:#18171C;font-weight:600;line-height:1.4;">I edited and added my own thinking</span></label>
+            <label style="display:flex;align-items:flex-start;gap:8px;cursor:pointer;"><input type="checkbox" onchange="if(this.checked)trackSmartChoice();" style="margin-top:2px;accent-color:#D97706;width:16px;height:16px;flex-shrink:0;"><span style="font-size:13px;color:#18171C;font-weight:600;line-height:1.4;">This still feels like my work</span></label>
+          </div>
+          <div style="background:#FEF3C7;border-radius:12px;padding:10px 12px;margin-top:auto;display:flex;align-items:center;gap:8px;">
+            <span style="font-size:18px;">🔄</span>
+            <span style="font-size:12px;color:#92400E;font-weight:700;line-height:1.4;">IF I copied → THEN I redo it in my own words.</span>
+          </div>
+        </div>
+
+        <!-- Card 4: I Promise -->
+        <div style="background:linear-gradient(135deg,#6B3FA0,#8B5CF6);border-radius:20px;padding:20px;display:flex;flex-direction:column;gap:12px;">
+          <div style="display:flex;align-items:center;gap:8px;">
+            <span style="font-size:28px;">🏅</span>
+            <div>
+              <div style="font-size:11px;font-weight:900;color:rgba(255,255,255,0.8);letter-spacing:0.1em;">I PROMISE TO</div>
+              <div style="font-size:18px;font-weight:900;color:white;">THINK TWICE</div>
+            </div>
+          </div>
+          <p style="font-size:13px;color:rgba(255,255,255,0.9);line-height:1.5;font-weight:600;">I will use AI to learn, create, and make a positive impact. I will be safe, honest, and kind.</p>
+          <div style="background:white;border-radius:12px;padding:10px 14px;">
+            <input id="pledgeSignature" type="text" placeholder="Your signature" style="width:100%;border:none;outline:none;font-size:18px;font-family:'Brush Script MT',cursive;color:#18171C;background:transparent;"/>
+            <div style="height:1px;background:#E5DEFA;margin-top:4px;"></div>
+            <div style="font-size:10px;color:#9B95A8;margin-top:4px;">Your signature</div>
+          </div>
+          <button onclick="makePledge()" style="background:white;color:#6B3FA0;border:none;padding:12px;border-radius:14px;font-size:15px;font-weight:900;font-family:'Nunito',sans-serif;cursor:pointer;width:100%;">I PROMISE 🤚</button>
+          <div id="pledgeConfirm" style="display:none;background:rgba(255,255,255,0.2);border-radius:10px;padding:8px;text-align:center;font-size:12px;color:white;font-weight:800;">✅ Promise made! Keep it up! 💜</div>
+        </div>
+
+        <!-- Card 5: Before I believe something -->
+        <div style="background:#F5F3FF;border-radius:20px;padding:20px;display:flex;flex-direction:column;gap:12px;border:1.5px solid #DDD6FE;">
+          <div style="display:flex;align-items:center;justify-content:space-between;">
+            <div style="display:flex;align-items:center;gap:8px;"><span style="font-size:22px;">🔍</span><span style="font-size:22px;font-weight:900;color:#6B3FA0;">4</span></div>
+            <span style="font-size:20px;">❓</span>
+          </div>
+          <div>
+            <div style="font-size:16px;font-weight:900;color:#6B3FA0;">Before I believe something...</div>
+            <div style="font-size:12px;color:#5C35A0;font-weight:600;margin-top:2px;">I check if it could be fake.</div>
+          </div>
+          <div style="display:flex;flex-direction:column;gap:8px;">
+            <label style="display:flex;align-items:flex-start;gap:8px;cursor:pointer;"><input type="checkbox" onchange="if(this.checked){trackSmartChoice();if(typeof userProgress!=='undefined')userProgress.fakesSpotted++;}" style="margin-top:2px;accent-color:#6B3FA0;width:16px;height:16px;flex-shrink:0;"><span style="font-size:13px;color:#18171C;font-weight:600;line-height:1.4;">I checked if it could be fake</span></label>
+            <label style="display:flex;align-items:flex-start;gap:8px;cursor:pointer;"><input type="checkbox" onchange="if(this.checked)trackSmartChoice();" style="margin-top:2px;accent-color:#6B3FA0;width:16px;height:16px;flex-shrink:0;"><span style="font-size:13px;color:#18171C;font-weight:600;line-height:1.4;">I asked, "Is this too perfect?"</span></label>
+            <label style="display:flex;align-items:flex-start;gap:8px;cursor:pointer;"><input type="checkbox" onchange="if(this.checked)trackSmartChoice();" style="margin-top:2px;accent-color:#6B3FA0;width:16px;height:16px;flex-shrink:0;"><span style="font-size:13px;color:#18171C;font-weight:600;line-height:1.4;">I verified with another source</span></label>
+          </div>
+          <div style="background:#EDE9FE;border-radius:12px;padding:10px 12px;margin-top:auto;">
+            <div style="font-size:12px;color:#5C35A0;font-weight:700;line-height:1.4;margin-bottom:4px;">Perfect images. Flawless text. That's a red flag!</div>
+            <a href="#" onclick="showLesson2();return false;" style="font-size:12px;color:#6B3FA0;font-weight:800;text-decoration:none;">Try our AI detector → ↗</a>
+          </div>
+        </div>
+
+        <!-- Card 6: How I use AI with others -->
+        <div style="background:#FFF0F6;border-radius:20px;padding:20px;display:flex;flex-direction:column;gap:12px;border:1.5px solid #FBCFE8;">
+          <div style="display:flex;align-items:center;justify-content:space-between;">
+            <div style="display:flex;align-items:center;gap:8px;"><span style="font-size:22px;">💗</span><span style="font-size:22px;font-weight:900;color:#DB2777;">5</span></div>
+            <span style="font-size:20px;">😍</span>
+          </div>
+          <div>
+            <div style="font-size:16px;font-weight:900;color:#DB2777;">How I use AI with others...</div>
+            <div style="font-size:12px;color:#9D174D;font-weight:600;margin-top:2px;">I choose kindness and positive impact.</div>
+          </div>
+          <div style="display:flex;flex-direction:column;gap:8px;">
+            <label style="display:flex;align-items:flex-start;gap:8px;cursor:pointer;"><input type="checkbox" onchange="if(this.checked)trackSmartChoice();" style="margin-top:2px;accent-color:#DB2777;width:16px;height:16px;flex-shrink:0;"><span style="font-size:13px;color:#18171C;font-weight:600;line-height:1.4;">I did NOT make fake images/accounts</span></label>
+            <label style="display:flex;align-items:flex-start;gap:8px;cursor:pointer;"><input type="checkbox" onchange="if(this.checked)trackSmartChoice();" style="margin-top:2px;accent-color:#DB2777;width:16px;height:16px;flex-shrink:0;"><span style="font-size:13px;color:#18171C;font-weight:600;line-height:1.4;">I did NOT use AI to bully or embarrass</span></label>
+            <label style="display:flex;align-items:flex-start;gap:8px;cursor:pointer;"><input type="checkbox" onchange="if(this.checked)trackSmartChoice();" style="margin-top:2px;accent-color:#DB2777;width:16px;height:16px;flex-shrink:0;"><span style="font-size:13px;color:#18171C;font-weight:600;line-height:1.4;">I used AI in a positive way</span></label>
+          </div>
+          <div style="background:#FCE7F3;border-radius:12px;padding:10px 12px;margin-top:auto;display:flex;align-items:center;gap:8px;">
+            <span style="font-size:18px;">💗</span>
+            <span style="font-size:12px;color:#9D174D;font-weight:700;line-height:1.4;">AI can create a lot. Kindness creates more.</span>
+          </div>
+        </div>
+
+        <!-- Card 7: Final Think Twice Check -->
+        <div style="background:#F0F9FF;border-radius:20px;padding:20px;display:flex;flex-direction:column;gap:12px;border:1.5px solid #BAE6FD;">
+          <div style="display:flex;align-items:center;justify-content:space-between;">
+            <div style="display:flex;align-items:center;gap:8px;"><span style="font-size:22px;">🛡️</span><span style="font-size:22px;font-weight:900;color:#0369A1;">6</span></div>
+            <span style="font-size:20px;">🌟</span>
+          </div>
+          <div>
+            <div style="font-size:16px;font-weight:900;color:#0369A1;">Final "Think Twice" Check</div>
+            <div style="font-size:12px;color:#075985;font-weight:600;margin-top:2px;">Before I click submit or share...</div>
+          </div>
+          <div style="display:flex;flex-direction:column;gap:10px;">
+            <div style="display:flex;align-items:center;justify-content:space-between;background:white;border-radius:10px;padding:8px 12px;">
+              <div style="display:flex;align-items:center;gap:6px;"><span style="font-size:16px;">🛡️</span><span style="font-size:13px;font-weight:700;color:#18171C;">Is this safe?</span></div>
+              <div style="display:flex;gap:8px;">
+                <label style="display:flex;align-items:center;gap:4px;cursor:pointer;font-size:12px;font-weight:700;color:#15803D;"><input type="radio" name="q_safe" value="yes" style="accent-color:#15803D;"> Yes</label>
+                <label style="display:flex;align-items:center;gap:4px;cursor:pointer;font-size:12px;font-weight:700;color:#DC2626;"><input type="radio" name="q_safe" value="no" style="accent-color:#DC2626;"> No</label>
+              </div>
+            </div>
+            <div style="display:flex;align-items:center;justify-content:space-between;background:white;border-radius:10px;padding:8px 12px;">
+              <div style="display:flex;align-items:center;gap:6px;"><span style="font-size:16px;">🧡</span><span style="font-size:13px;font-weight:700;color:#18171C;">Is this honest?</span></div>
+              <div style="display:flex;gap:8px;">
+                <label style="display:flex;align-items:center;gap:4px;cursor:pointer;font-size:12px;font-weight:700;color:#15803D;"><input type="radio" name="q_honest" value="yes" style="accent-color:#15803D;"> Yes</label>
+                <label style="display:flex;align-items:center;gap:4px;cursor:pointer;font-size:12px;font-weight:700;color:#DC2626;"><input type="radio" name="q_honest" value="no" style="accent-color:#DC2626;"> No</label>
+              </div>
+            </div>
+            <div style="display:flex;align-items:center;justify-content:space-between;background:white;border-radius:10px;padding:8px 12px;">
+              <div style="display:flex;align-items:center;gap:6px;"><span style="font-size:16px;">😊</span><span style="font-size:13px;font-weight:700;color:#18171C;">Is this kind?</span></div>
+              <div style="display:flex;gap:8px;">
+                <label style="display:flex;align-items:center;gap:4px;cursor:pointer;font-size:12px;font-weight:700;color:#15803D;"><input type="radio" name="q_kind" value="yes" style="accent-color:#15803D;"> Yes</label>
+                <label style="display:flex;align-items:center;gap:4px;cursor:pointer;font-size:12px;font-weight:700;color:#DC2626;"><input type="radio" name="q_kind" value="no" style="accent-color:#DC2626;"> No</label>
+              </div>
+            </div>
+          </div>
+          <div style="background:#FEE2E2;border-radius:12px;padding:10px 12px;margin-top:auto;display:flex;align-items:center;gap:8px;">
+            <span style="font-size:18px;">🔴</span>
+            <span style="font-size:12px;color:#991B1B;font-weight:700;line-height:1.4;">If ANY answer is no → ✋ STOP and rethink.</span>
+          </div>
+        </div>
+
+        <!-- Card 8: Why This Matters -->
+        <div style="background:white;border-radius:20px;padding:20px;display:flex;flex-direction:column;gap:10px;border:1.5px solid #E5DEFA;">
+          <div style="font-size:16px;font-weight:900;color:#18171C;margin-bottom:4px;">WHY THIS MATTERS</div>
+          <div style="display:flex;flex-direction:column;gap:8px;">
+            <div style="display:flex;align-items:center;gap:10px;"><span style="font-size:20px;">🌍</span><span style="font-size:13px;font-weight:700;color:#18171C;">Protects your privacy</span></div>
+            <div style="display:flex;align-items:center;gap:10px;"><span style="font-size:20px;">🔒</span><span style="font-size:13px;font-weight:700;color:#18171C;">Helps you learn deeply</span></div>
+            <div style="display:flex;align-items:center;gap:10px;"><span style="font-size:20px;">🎓</span><span style="font-size:13px;font-weight:700;color:#18171C;">Keeps school fair</span></div>
+            <div style="display:flex;align-items:center;gap:10px;"><span style="font-size:20px;">❤️</span><span style="font-size:13px;font-weight:700;color:#18171C;">Spreads kindness</span></div>
+            <div style="display:flex;align-items:center;gap:10px;"><span style="font-size:20px;">⭐</span><span style="font-size:13px;font-weight:700;color:#18171C;">Builds your future</span></div>
+          </div>
+          <div style="background:#F5F0FF;border-radius:12px;padding:10px 12px;margin-top:auto;text-align:center;">
+            <span style="font-size:12px;color:#6B3FA0;font-weight:800;">✨ Small checks. Big impact. ✨</span>
+          </div>
+        </div>
+
+    </div>
+  </div>
+
 
   <!-- GOAL BANNER -->
   <div style="background:#DCFCE7;border:1.5px solid #6EE7B7;border-radius:20px;margin:24px 40px;padding:24px 32px;display:flex;align-items:center;gap:16px;">
