@@ -1,0 +1,14 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(cp \"Screenshot 2026-04-08 at 12.42.36 AM.png\" \"ai-hero.png\")",
+      "Bash(cp \"Screenshot 2026-04-08 at 12.41.00 AM.png\" \"ai-goes-wrong.png\")",
+      "Bash(cp \"Screenshot 2026-04-08 at 12.41.36 AM.png\" \"ai-wisely.png\")",
+      "Bash(cp \"/Users/malathyshah/Desktop/FOLDER FOR CODE/thinktwice/Screenshot 2026-04-08 at 12.42.36\"*\".png\" \"/Users/malathyshah/Desktop/FOLDER FOR CODE/thinktwice/ai-hero.png\")",
+      "Bash(python3 -c \"import shutil; shutil.copy\\('/Users/malathyshah/Desktop/FOLDER FOR CODE/thinktwice/Screenshot 2026-04-08 at 12.42.36 AM.png', '/Users/malathyshah/Desktop/FOLDER FOR CODE/thinktwice/ai-hero.png'\\)\")",
+      "Skill(claude-api)",
+      "Skill(claude-api:*)",
+      "WebSearch"
+    ]
+  }
+}
